@@ -1,0 +1,67 @@
+cd Desktop/
+mkdir MovieRaterApi
+cd MovieraterApi/
+python3 -m venv venv
+source venv/bin/activate
+pip install Django
+pip install Djangorestframework
+django-admin startproject movierater .//settings ka folder ha
+django-admin startapp api//ye admin or models wala folder ha
+python manage.py migrate //ye setup karny ky bad likhna zarori ha
+python3 manage.py makemigration
+python3 manage.py migrate
+-------------------------------------------------------------
+2nd python app
+
+cd Desktop/
+makdir django_rest
+cd django_rest
+python3 -m venv venv
+source venv/bin/activate
+pip install Django
+pip install Djangorestframework
+django-admin startproject leadmanger
+python manage.py startapp leads
+
+for react integration:
+python manage.py startapp frontend
+mkdir -p ./frontend/{static,templates}/frontend
+cd ..
+ls //check your file venv leadmanager
+npm init -y //check version
+npm i -D webpack webpack-cli
+npm -i D @babel/core babel-loader @babel/preset-env @babel/preset-react babel-plugin-transform-class-properties
+ npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+
+ npm i react react-dom prop-types
+
+
+
+
+------------------------------------------------------------
+"Greetings! My name is aman mirza and I am an expert in web development. I would love to have the opportunity to discuss your project with you.
+
+I believe my skills are a match for your project. I have a good grasp of working with flask and django framework, I would be easily able to achieve the task; converting the your current website(with same or better design format) into the flask and django framework.
+
+I have completed major upwork tests in the area of the web development, and have passed in all of them, which reflects on the above statement.
+Full time availabe.
+
+I have experience in the following languages.
+HTML
+CSS
+Javascript
+React 
+
+And the following frameworks
+flask
+Django
+
+I belive communication is the key to any successful project, and I'd like to start things off on the right foot but suggesting we schedule a phone or skype call to discuss the project further. This will enable us to make sure we communicate well and that both parties are completely comforatable with the scope of the project. Please let me know a time that works best for you and I will make sure that I make myself available. 
+
+If you give me this opportunity, this would be my first project in upwork, so I would be really grateful if you could give me this opportunity.
+
+Thank you for your time and consideration. 
+
+Sincerely,
+
+Aman mirza"

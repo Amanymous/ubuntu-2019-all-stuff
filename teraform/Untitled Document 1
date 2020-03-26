@@ -1,0 +1,73 @@
+terraform class1: 
+date: 10 jan
+
+cncf.io //development tool
+
+tereform ma hum tool banty hain
+
+EC2 - instance 
+firewaLL -Ssecurity-group
+database
+DNS
+CDN
+v1 //ye mera template ha 
+
+file.tf // ya v1 ka .tf extension ha
+build.tf
+JSON //ye json format ha
+{
+"name":"aman"
+}
+UCL//ye ucl ka format ha or isma same variable multiple time use karsakty hain ku ky list consider karta ha 
+//ucl or hashicrop configutration language dono ek hi hain
+
+INSTANCE ="aman"
+
+v2
+v3
+v4 //ye v sary versions hain
+AWS hamain proivide karta ha cloudplatform
+abksdbvsdjkb //ye data ha 
+
+AWS // important notes
+security of cloud 
+security in cloud
+
+integeration test staging production
+jenkins-template //ye tool ha
+pipeline-CI CD
+ansible -remote //ye tool ha
+AWS - instance //ye hybride ha public or private dono provide karta ha
+github-deveops tools
+
+user 
+instance 1 front end public
+instance 2 databasepvt
+-----------------------------------------------------------------------
+kubernetes class
+
+ager master node fail hoti ha to sb ko down krdeta ha 
+
+shedular ka kam hota ha jobs ko shedule karna,services,secretes or koi 
+install cli version 1
+beep works company ny introduce karwaya tha ekscl ye tool ha
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

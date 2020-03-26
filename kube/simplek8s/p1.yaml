@@ -1,0 +1,12 @@
+aapiVersion: v1
+kind: Pod
+metadata:
+  name: p1
+spec:
+  containers:
+  - name: container1
+    image: amanmirza/helloworld:latest
+    ports:
+    - containerPort: 80
+
+  

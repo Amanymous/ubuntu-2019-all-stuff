@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7023e0eb-9024-4230-a808-15c1f033545e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UkucJZExmJWq8fuOuuX2OBMsQq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.amanymous.Main" />
+      <module name="data sturcture" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7023e0eb-9024-4230-a808-15c1f033545e" name="Default Changelist" comment="" />
+      <created>1575912991426</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575912991426</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="777" y="284" width="484" height="244" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1575915050222">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="777" y="284" width="484" height="244" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1366.741@0.27.1366.741" timestamp="1575915050222" />
+    <state width="637" height="172" key="GridCell.Tab.0.bottom" timestamp="1575917797172">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="637" height="172" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1575917797171" />
+    <state width="637" height="172" key="GridCell.Tab.0.center" timestamp="1575917797171">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="637" height="172" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1575917797171" />
+    <state width="637" height="172" key="GridCell.Tab.0.left" timestamp="1575917797171">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="637" height="172" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1575917797171" />
+    <state width="637" height="172" key="GridCell.Tab.0.right" timestamp="1575917797171">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="637" height="172" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1575917797171" />
+    <state x="344" y="31" width="1022" height="737" key="SettingsEditor" timestamp="1575915333658">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="344" y="31" width="1022" height="737" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1575915333658" />
+    <state x="0" y="27" width="1356" height="741" key="new project wizard" timestamp="1575917794937">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="0" y="27" width="1356" height="741" key="new project wizard/0.27.1366.741@0.27.1366.741" timestamp="1575917794937" />
+  </component>
+</project>

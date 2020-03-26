@@ -1,0 +1,514 @@
+Introduction To Kubernetes:
+
+commands:
+minikube start
+
+minikube status //host ma running ana zarori ha 
+
+kubectl cluster-info//ye apka ip address show karega
+
+kubectl get nodes //ye version or status or dosri cheezain batata ha
+
+kubectl describe node minikube//ye maksos node ki detail batati ha  or minikube node ka naam ha
+
+alias kgn="kubectl get nodes"//ya commad ko short karta ha
+
+kubectle get no//ye nodes ki jaga no likha ha kam axact wohi karta ha
+pod:ye raper ki tarah hota ha container nai hota ye docker container ko rap karta ha
+
+kind: Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: contasiner1
+    image: amanmirza/helloword:latest
+    ports:
+    - containerPort: 80
+
+kubectl apply -f p.yaml//ye pod create karti ha
+kubectl get pod //jo pod create kiya ha aus ki decription bata ha ky sahi chal raha ha ya nai ager READY 0/1 TO YANI POD NAI CHAL RAHA AGER 1/1 TO CHAL RAHA HA
+kubectl get po //short form
+kubectl get pods myfirstpod -o yaml //ye bi wohi file bany ga or aus ma bhot si cheezain add kardega
+kubectl get pods myfirstpod -o yaml //ye json format ma dega detail
+kubectl describe pods p//ye pod ko describe karega or p file ka name ha 
+kubectl run firstpod  --image=amanmirza/helloworld:latest --port=80 --restart=Never //short way to create pod
+kubectl port-forword firstpod 9000:80//ya host change kiya ap is ko apny localhost:9000 chala kar check karsakty hain
+===pod with label===
+kind: Pod
+apiVersion: v1
+metadata:
+  name: label//label pod ka name ap kuch bi deskaty hain
+  labels:
+    type: backend
+    env: production
+spec:
+ containers:
+ - image: aamirpinger/helloworld:latest
+   name: container1
+   ports:
+   - containerPort: 80
+kubectl create -f label.yaml//pod create hoga is commad sy
+kubectl get pods   //check karna ha ky ye pod running condition ma ha ya nai
+
+kubectl run anotherlabel --image=aamirpinger/helloworld --port=80 --restart=Never --labels=type=frontend,env=development
+//ye pod run commad ky through banya ha
+
+kubectl get pods --show-labels
+//ye command apko labels show karti ha jitni file bani ha or jin ma label nai hongy aunky agy none hoga or jo pod run command ky through banta ha ausko key run rakh deta ha
+
+kubectl get pods -L env//ya command key ko column banadeta ha jis jis pod ky aganist value hongi aunko show kardega
+
+kubectl get pods -L env,type,run
+kubectl get pods -L city //city is waja sy likha taky check karsky kay isky name par koi value given ha ya nai ager koi value given nai hogi to
+wo ausko empty show karega
+
+kubectl label pods first app=helloworld type=fronend 
+//ye kisi phey sy bany huway pod ki key or type ko change karny ky liye use karty hain
+
+kubectl anotherlabel env=production //yahan error dega ku ky env already mojod ha
+
+kubectl label pods anotherlabel env=production --overwrite//ye env ko overwrite kargega 
+
+kubectl label pod first app- //ye app pod ko label banadega ku ky auski key app thi is waja sy
+
+kubectl get pods -l type=frontend//ya without label pods hain 
+
+kubectl get pods -l type=frontend --show-labels
+//ye sirf aunhi ko show karega jin ki type frontend ha or without labels hain
+
+kubectl get pods -l type!=frontend --show-labels//ye aunko show kareega jin ki type frontend nai hogi
+
+kubectl get pods -l type!-frontend,env=development//means iski type frontend nai ho or env=development ho
+
+kubectl get pods -l type!=frontend,env=production
+//ye sirf production wali type ko show karega
+
+kubectl get pods -l env --show labels //jis ma env ki key majood ha sirf wo show karega
+
+kubectl get pods -l '!env' --show-labels//ye wo show karega jis ki key env nai ha
+
+kubectl get pods -l 'type in (frontend,backend)' --show-labels//ye wo show karege jis ma frontend oe backend hun sirf wo show karega
+
+//or ager mijhe sary  labels check karny hain jis ma frontend ,backend or wo hun jin ki koi type nai ha 
+kubectl get pods
+
+//or ager wo label chiye jis ma type ki koi key nai ho to auski cammand ye hogi
+kubectl get pods -l 'type notin (frontend,backend) --show-labels
+==pod using node selector===
+nano podwithnodeselector.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: podwithnodeselector
+spec:
+  nodeSelector:
+    typeofharddisk: ssd
+  containers:
+  - name: container1
+    image: amanmirza/flag:latest
+    ports:
+    - containerPort: 80
+kubectl create -f podwithnodeselector.yaml
+kubectl get pods//ager node pending state to is ki waja ssd ha 
+kubectl get pods podwithnodesselector
+//ager mijhe is pod ko running state ma lana ha to auski command ya ha
+kubectl label node minikube typrofharddisk=ssd
+kubectl get pods
+kubectl get pods podwithnodeselector -o yaml//ab ye runnig state agy ha
+
+===podwithannotation===
+kind: Pod
+apiVersion: v1
+metadata:
+  name: podwithannotation
+  annotations:
+    createdBy: "aman mirza"
+    email: aman.mirza358@gmail.com
+spec:
+  containers:
+  - name: container-new
+    image: aamirpinger/flag:latest
+    ports:
+    - containerPort: 80
+kubectl create -f podwithannotation.yaml
+kubectl get pods podwithannotation -o yaml
+//ager mhe kisi bany huwy pod ma koi annotation deni ha to iski command ye ha
+kubectl annotate pod myfirstpod app-description="example of annotation in kubernetes"
+kubectl get pods myfirstpod -o yaml
+//ab isi pod ki description check karni ha
+kubectl describe pod myfirstpod
+
+===name spaces===
+kubectl create namespaces production
+kubectl get ns
+kubectl create ns development
+kubectl get namespaces
+//ager kisi pod ma koi name bana ha to ausky liye namespace dena parega
+kind: Pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myfirstpod
+  namespace: production
+spec:
+  containers:
+  - name: contasiner1
+    image: amanmirza/helloword:latest
+    ports:
+    - containerPort: 80
+kubectl create -f myfirstpod.yaml
+kubectl get pods --namespace=production
+kubectl get pods
+//command line ky through namespace baban ho to ye command
+kubectl run nsexample --image=aamirpinger/helloworld --port=80 --restart=Never namespace=development
+kubectl get pods
+kubectl get pods -n production
+kubectl get pods -n development//ye development py pod banaya ha to is waja show kar rha ha production py nai banaya ha
+
+kubectl get pods --all namespaces//is sy namespace show hum ny hain or jo kubeernetes ny bany hain
+
+//or jab kisi resouce ko delete kana ho 
+kubectl delete pod myfirstpod 
+kubectl get pods --all namespaces
+kubectl delete myfirstpod --namespace=production //ye production ko delete kardega
+kubectl get pods --all-namespace//or is ny production ko bi delete kardega
+
+//or ager name space ko competely delete karna ha to command ye hogi
+kubectl delete ns development //ye delete kardea
+kubectl get ns// or development delete mily ga
+
+//or jis ki type front,back ya development to command ye hogi
+kubectl get po --show-labels
+kubectl delete pods -l type=backend//backend type ko delete kardega
+
+kubectl delete pods -l 'type in (frontend,backend)' //ye front or back ko delete kardega
+kubectl get pods 
+//or ager sary resource delte karny to ye command hogi
+kubectl delete pod --all //ye sari pods delete kardega
+------------------------------------------------------------------
+replicaset
+
+nano rs.yaml
+
+kind: ReplicaSet
+apiVersion: apps/v1beta2
+metadata: 
+  name: myrs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rsexample 
+  template:
+    metadata:
+      labels:
+	app: rsexample
+    spec:
+      containers:
+      - name: rscontainer
+        image: aamirpinger/helloworld:latest
+	ports:
+	- containers: 80
+cat rs.yaml
+kubectl create -f rs.yaml
+
+kubectl get pods
+
+kubectl get rs//to get listing
+
+kubectl get pods --show-labels
+
+kubectl get rs
+
+kubectl get rs myrs -o yaml
+
+kubectl describe rs myrs
+
+kubectl get pods,rs//ye dono resource ek sth chala dega
+
+kubectl delete pod myrs-m2brl //myrs-m2brl name koi sa bi hosakta ha zarori nai ha yehi ho or 1 got ko delete kardega
+
+kubectl get rs,pod//rs replicaset ki short form ha
+
+kubectl get pods,replicasets --show-labels
+
+kubectl label pod myrs-sq5zz app=rsexampleNEW --overwrite
+
+kubectl get pods,rs --show-labels
+
+kubectl delete pods -l app=rsexample//mean js pod ma rsexample ho to delete kardey
+kubectl get pod,rs
+
+kubectl delete rs myrs//myrs name ky jitny replicaset hain wo delete hojy gy
+
+kubectl get pods,rs --show-labels
+
+kubectl delete rs myrs //ye replicaset bi delete karga or pods bi
+ 
+kubectl delete rs myrs --cascade=false//ye pods ko delete nai karega bs replicaset ko delete kardega
+
+kubectl get po,rs --show-labels
+
+kubectl create -f rs.yaml//replicaset dobhara ban gya 
+
+kubectl get pods,rs --show-labels//no new pods nai bany ku ky phely sy mojood thy
+
+nano rs.yaml//purani wohi file ma changes karin hain
+
+
+kind: ReplicaSet
+apiVersion: apps/v1beta2
+metadata: 
+  name: myrs
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - rsexample	  
+  template:
+    metadata:
+      labels:
+	app: rsexample
+    spec:
+      containers:
+      - name: rscontainer
+        image: aamirpinger/helloworld:latest
+	ports:
+	- containers: 80
+
+cat rs.yaml
+kubectl delete rs myrs --cascade=false
+
+kubectl create -f rs.yaml//dobhara replicaset banya ha
+
+kubectl get po,rs --show-labels
+
+kubectl edit rs myrs//ye edit karny ka tarika ha i press karny sy insert karta ha or esc press out hojy gy
+
+:wq!//bhar ajy gy
+
+kubectl get po,rs
+kubectl get pods,rs --show-labels
+
+kubectl scale rs myrs --replicas=5
+//for scale up and down apki marzi ha jitny kam kardey
+
+kubectl get pods,rs
+
+kubectl get pods,rs --show-labels
+
+===job resource===
+
+nano job.yaml
+
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: jobexample
+spec:
+  template:
+    spec:
+      containers:
+      - name: jobcontainer
+	image: docker/whaleasy/ls
+	command: ["cowsay","This is job resource example"]      
+      restartPolicy: Never
+  backoffLimit: 4 //kitny time fail hony py restart karna
+  activeDeadlineSeconds: 60
+
+kubectl create -f job.yaml
+kubectl get job //listing lena
+kubectl get po
+kubectl logs jobexample-b25z9
+//file system ma jo print hota ha ausy show kardega
+
+==CronJod==
+
+nano cj.yaml
+
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata: 
+  name:cj
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: cjexample
+        spec:
+          containers:
+          - name: cjcontainer
+            image: docker/whaleasy
+	    command: ["cowsay","CronJob example"]
+          restartPolicy: Never
+
+kubectl create -f cj.yaml
+kubectl get cj/cj mean cronjob
+kubectl cj,job,pod
+kubectl cj,job,pod//1 min ky bad check karna ha
+
+kubectl logs cj-1563808080-qv8r4 //-1563808080-qv8r4 ya random number kuch bi asakta ha
+
+kubectl log cj-15808080//dosra part
+
+kubectl get cj,job,pod//listing check karna ha
+
+kubectl delete cronjob cj
+//delete hojy ga
+kubectl cj,job,pod
+----------------------------------------------------------------
+===load balancer===
+kubectl get pods
+
+kubectl get rs
+
+nano mysvc.yaml
+
+kind: Service
+apiVersion: v1
+metadata: 
+  name: m-service //name kuch desakty hain
+spec:
+  ports:
+  - port: 8080
+    targetPort: 80
+  type: LoadBalancer
+  selector:
+    app: rsexmple
+kubectle create -f mysvc.yaml
+kubectl get svc//svc isfor services
+
+minikube ip//ye ip address maloom karny ka tarika ha
+
+//ip address localhost py likhy gy or port number bi to helloworld ay ga
+
+kubectl expose rs myrs --name=mysvc-lb --selector=app=rsexample --port 8000 --target-port=80 --type=loadBalancer
+//name=mysvc-lb ye kuch desakty hain
+
+kubectl get svc
+//ip address localhost py likhy gy or port number bi to helloworld ay ga
+
+nano liveness.yaml
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: lp-pod
+spec: 
+  containers:
+  - name: container1
+    image: aamirpinger/hi:latest
+    ports:
+    - containerPort: 80
+    livenessProbe:
+      exec:
+        command:
+	- ls
+kubectl create -f liveness.yaml
+kubectl get po
+//check karin gy liveness probe kiya ya nai
+kubectl describe lp-pod
+//after 1min pod get karin gy 
+kubectl get pod lp-pod
+
+nano liveness.yaml
+//same ma changes
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: lp-pod-new
+spec: 
+  containers:
+  - name: container1
+    image: aamirpinger/hi:latest
+    ports:
+    - containerPort: 80
+    livenessProbe:
+      exec:
+        command:
+	- cat
+	- abc.txt
+kubectl create -f liveness.yaml
+ 
+kubectl get pod
+
+kubectl describe po lp-pod-new
+//lp-pod-new ye iswaja sy diya ha ku ky yaml file ma new name diya ha
+
+kubectl describe po lp-pod-new
+
+kubectl get pod//check karin kitni dafa run kiya ku ky abc.txt esi koi file hi nai ha
+
+nano rpod.yaml
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: rpod
+spec: 
+  containers:
+  - name: container-rp
+    image: aamirpinger/helloworld:latest
+    ports:
+    - containerPort: 80
+    readinessProbe:
+      httpGet:
+	port: 80
+	path: /
+//path / means first page ky liye
+
+kubectl create -f rpod.yaml
+kubectl get pods
+kubectl describe po rspod
+kubectl describe pod rpod
+//state ko check karingy
+
+nano rpod.yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: rpodnew
+spec: 
+  containers:
+  - name: container-rp
+    image: aamirpinger/helloworld:latest
+    ports:
+    - containerPort: 80
+    readinessProbe:
+      httpGet:
+	port: 90
+	path: /
+//container 80 py tha many 90 kardiya check karty hain chalt ha ya nai
+
+kubectl get pods
+
+kubectl describe pod rpodnew
+//or isme response nai milega ku ky request 80 py ha port 90 py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

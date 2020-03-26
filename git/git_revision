@@ -1,0 +1,13 @@
+git config --global user.name "aman mirza"
+git config --global user.email "amanmirza99"
+
+git add file or folder name //ye batay ga ky changes huwy hain
+git commit -m "update file or folder name"
+git log //ye bata ha ky kis ma changes huy hain
+
+git reset //ye files ko stage kartaha
+git reset --hard//ye files ma changes discard kardega
+
+ager koi ko ignor karna ho to .gitignor file kam name likhygy
+or aus ma file ka name likhdy gy 
+or jis file ko track nai karna aus ko .gitignore ma *.file name

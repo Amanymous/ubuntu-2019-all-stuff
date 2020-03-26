@@ -1,0 +1,15 @@
+java data sturctures and algorithms
+
+STACK:it work with array and linkedlist.stack ma last in first out case use
+hota ha .jb bi array ma koi value put hogi to ausko push karna hoga or jb
+bi koi vlaue bhar nikalni hogi to pop karna hoga
+
+QUEUE:is ma first in first out hota ha jo number phely add hoga to wo bhar 
+bi phely ay ga.adding item inside queu is called enque get an item from 
+queu is called dequeue,front jo ha wo array ky top ky element ko kehty hain
+jo arryaabhi add huwa ho.rear is the tale of array where the 1st item was added in the array 
+
+LINKED LIST:it is define as link b/w diff object and diff nodes of class
+1 is value and other is property of that node.in array we define the size 
+and in linked list automatically increase how many we want to enter and 
+remove something
